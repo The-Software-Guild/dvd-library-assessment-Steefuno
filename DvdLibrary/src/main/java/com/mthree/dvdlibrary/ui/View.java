@@ -17,7 +17,7 @@ public class View {
     
     /**
      * Constructs a new View given a UI
-     * @param ui    the object that handles giving and getting data from the user
+     * @param ui the object that handles giving and getting data from the user
      */
     public View(UI ui) {
         this.ui = ui;
@@ -25,7 +25,7 @@ public class View {
     
     /**
      * Displays a message to the user
-     * @param message   the message to send to the user
+     * @param message the message to send to the user
      */
     public void say(String message) {
         
