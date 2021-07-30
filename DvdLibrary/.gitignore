@@ -1,0 +1,7 @@
+.settings
+.project
+.target
+.classpath
+*\nb-configuration.xml
+*\nbactions.xml
+pom.xml
