@@ -140,7 +140,7 @@ public class Dvd {
                 "MPAA Rating: %f\n" + 
                 "Director: %s\n" + 
                 "Studio: %s\n" + 
-                "Note: %s\n"
+                "Note: %s"
             ),
             title,
             release,

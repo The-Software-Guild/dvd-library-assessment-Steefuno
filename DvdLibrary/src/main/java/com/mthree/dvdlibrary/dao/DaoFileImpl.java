@@ -13,7 +13,6 @@ import java.util.Scanner;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.Collection;
-import java.util.Set;
 
 /**
  * Assumes duplicate titles don't exist
@@ -25,7 +24,7 @@ public class DaoFileImpl implements Dao {
     
     public DaoFileImpl(String path) {
         this.path = path;
-        this.library = new HashMap();
+        this.library = new HashMap<String, Dvd>();
     }
     
     /**
@@ -87,6 +86,10 @@ public class DaoFileImpl implements Dao {
             Dvd dvd;
             
             data = scanner.nextLine();
+            if (data.equals("")) {
+                break;
+            }
+            
             dvd = unmarshal(data);
             
             library.put(dvd.getTitle(), dvd);
@@ -123,6 +126,7 @@ public class DaoFileImpl implements Dao {
             
             writer.println(data);
         }
+        writer.close();
     }
     
     /**

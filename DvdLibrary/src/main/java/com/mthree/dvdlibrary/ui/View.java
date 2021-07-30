@@ -83,7 +83,7 @@ public class View {
      * @param dvdNames an array of DVD names
      */
     public void listDvds(String[] dvdNames) {
-        ui.say("DVDs:\n");
+        ui.say("\nDVDs:");
         for (String title: dvdNames) {
             ui.say(title);
         }

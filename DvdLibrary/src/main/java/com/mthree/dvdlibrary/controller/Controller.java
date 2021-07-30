@@ -31,7 +31,6 @@ public class Controller {
      */
     public void run() {
         String selection;
-        boolean running;
         
         load();
         view.say("Welcome to your library.");
@@ -106,7 +105,7 @@ public class Controller {
      * Updates the DVDs key in the library if the title has changed
      */
     private void editDvd(Dvd dvd) {
-        String selection, stringValue;
+        String selection, stringValue, oldTitle;
         double doubleValue;
         
         // Iteratively get a DVD field to edit and edit
@@ -120,8 +119,12 @@ public class Controller {
             // Handles the user's selection of field
             switch (selection.toLowerCase()) {
                 case ("title"):
+                    oldTitle = dvd.getTitle();
                     stringValue = view.promptString("\nWhat is the new title?");
                     dvd.setTitle(stringValue);
+                    
+                    dao.removeDvd(oldTitle);
+                    dao.addDvd(dvd);
                     break;
                 case ("release"):
                     stringValue = view.promptString("\nWhat is the new release date?");
@@ -179,6 +182,12 @@ public class Controller {
         title = view.promptString("\nWhat is the title of the movie?");
         dvd = dao.getDvd(title);
         
+        // Make sure the DVD exists
+        if (dvd == null) {
+            view.say("\"" + title + "\" does not exist.");
+            return;
+        }
+
         // Iteratively requests and handles this DVD until exit
         dvdMenu: do {
             // Requests a selection to the DVD
