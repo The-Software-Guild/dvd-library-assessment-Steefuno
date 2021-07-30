@@ -6,7 +6,6 @@
 package com.mthree.dvdlibrary.ui;
 
 import com.mthree.dvdlibrary.dto.Dvd;
-import com.mthree.dvdlibrary.ui.UI;
 
 /**
  * 
@@ -28,7 +27,7 @@ public class View {
      * @param message the message to send to the user
      */
     public void say(String message) {
-        
+        ui.say(message);
     }
     
     /**
@@ -37,7 +36,17 @@ public class View {
      * @return the string inputted by the user
      */
     public String promptString(String message) {
+        String response;
         
+        do {
+            try {
+                ui.say(message);
+                response = ui.readString();
+                break;
+            } catch (Exception e) {}
+        } while (true);
+        
+        return response;
     }
     
     /**
@@ -46,7 +55,19 @@ public class View {
      * @return the double inputted by the user
      */
     public double promptDouble(String message) {
+        double response;
         
+        do {
+            try {
+                ui.say(message);
+                response = Double.parseDouble(
+                    ui.readString()
+                );
+                break;
+            } catch (Exception e) {}
+        } while (true);
+        
+        return response;
     }
     
     /**
@@ -54,7 +75,7 @@ public class View {
      * @param dvd the DVD to show the information of
      */
     public void displayDvdInformation(Dvd dvd) {
-        
+        ui.say("\n" + dvd.toString());
     }
     
     /**
@@ -62,6 +83,9 @@ public class View {
      * @param dvdNames an array of DVD names
      */
     public void listDvds(String[] dvdNames) {
-        
+        ui.say("DVDs:\n");
+        for (String title: dvdNames) {
+            ui.say(title);
+        }
     }
 }

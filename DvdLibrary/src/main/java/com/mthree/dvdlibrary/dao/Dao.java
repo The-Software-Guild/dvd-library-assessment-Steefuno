@@ -40,4 +40,9 @@ public interface Dao {
      * Saves the library of DVDs
      */
     public void save();
+    
+    /**
+     * Gets the titles of all DVDs
+     */
+    public String[] getTitles();
 }

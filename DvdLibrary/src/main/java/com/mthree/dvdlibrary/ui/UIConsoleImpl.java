@@ -18,7 +18,7 @@ public class UIConsoleImpl implements UI {
      */
     @Override
     public void say(String message) {
-        System.out.print(message);
+        System.out.println(message);
     }
     
     /**

@@ -13,6 +13,7 @@ import java.util.Scanner;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.Collection;
+import java.util.Set;
 
 /**
  * Assumes duplicate titles don't exist
@@ -97,7 +98,7 @@ public class DaoFileImpl implements Dao {
      */
     @Override
     public void save() {
-        Collection dvds;
+        Collection<Dvd> dvds;
         PrintWriter writer;
         
         // Attempt to open the file
@@ -113,7 +114,7 @@ public class DaoFileImpl implements Dao {
         
         // Adds DVDs line by line into the file after marshaling
         dvds = library.values();
-        for (Object value: dvds) {
+        for (Dvd value: dvds) {
             Dvd dvd;
             String data;
             
@@ -122,6 +123,24 @@ public class DaoFileImpl implements Dao {
             
             writer.println(data);
         }
+    }
+    
+    /**
+     * Gets the titles of all DVDs
+     */
+    @Override
+    public String[] getTitles() {
+        Object[] keys;
+        String[] titles;
+        
+        // Make the keys into an array, then set into a String[] array
+        keys = library.keySet().toArray();
+        titles = new String[keys.length];
+        for (int i = 0; i < keys.length; i++) {
+            titles[i] = (String) keys[i];
+        }
+        
+        return titles;
     }
     
     /**

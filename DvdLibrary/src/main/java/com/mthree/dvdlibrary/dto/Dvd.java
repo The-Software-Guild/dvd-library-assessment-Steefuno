@@ -126,4 +126,28 @@ public class Dvd {
     public String getNote() {
         return note;
     }
+    
+    /**
+     * Gets the information on this DVD
+     * @return the information
+     */
+    @Override
+    public String toString() {
+        return String.format(
+            (
+                "Title: %s\n" + 
+                "Release Date: %s\n" + 
+                "MPAA Rating: %f\n" + 
+                "Director: %s\n" + 
+                "Studio: %s\n" + 
+                "Note: %s\n"
+            ),
+            title,
+            release,
+            rating,
+            director,
+            studio,
+            note
+        );
+    }
 }
