@@ -128,7 +128,7 @@ public class Controller {
                     break;
                 case ("release"):
                     stringValue = view.promptString("\nWhat is the new release date?");
-                    dvd.setNote(stringValue);
+                    dvd.setRelease(stringValue);
                     break;
                 case ("rating"):
                     doubleValue = view.promptDouble("\nWhat is the new rating?");
@@ -140,7 +140,7 @@ public class Controller {
                     break;
                 case ("studio"):
                     stringValue = view.promptString("\nWhat is the new studio?");
-                    dvd.setNote(stringValue);
+                    dvd.setStudio(stringValue);
                     break;
                 case ("note"):
                     stringValue = view.promptString("\nWhat is the new note?");
